@@ -16,7 +16,7 @@ BEIGE = "#EEECE1"
 POLICE = 'Inter, "Helvetica Neue", Arial, sans-serif'
 TITRES = '"6tTitre", Montserrat, "Helvetica Neue", Arial, sans-serif'
 
-LOGO = Path(__file__).resolve().parent / "assets" / "logo_6t.png"
+LOGO = Path(__file__).resolve().parent / "assets" / "logo_6t_bureau.png"
 
 CSS = """
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -32,12 +32,11 @@ CSS = """
   [data-testid="stSidebar"] { background: white; border-right: 1px solid @BEIGE; }
   [data-testid="stSidebar"] h1 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
 
-  .hero { display: flex; align-items: center; gap: 1.6rem; color: white; padding: 1.5rem 1.9rem;
+  .hero { color: white; padding: 1.5rem 1.9rem;
           border-radius: 12px; margin-bottom: 1.1rem; box-shadow: 0 6px 18px rgba(98,70,211,.25);
           background: linear-gradient(120deg, @MARINE 0%, #2B2A8F 55%, @VIOLET 100%); }
-  .hero-logo { background: white; border-radius: 14px; padding: .6rem; flex: none; line-height: 0;
-               box-shadow: 0 2px 8px rgba(6,13,83,.25); }
-  .hero-logo img { height: 74px; width: auto; display: block; }
+  .logo-colonne { text-align: center; }
+  .logo-colonne img { width: 100%; max-width: 230px; height: auto; }
   .hero h1 { color: white; margin: 0; font-size: 1.55rem; text-transform: uppercase;
              letter-spacing: 3px; padding: 0; line-height: 1.3; }
   .hero p { margin: .4rem 0 0 0; opacity: .92; font-size: 1.02rem; }
@@ -65,7 +64,9 @@ CSS = """
 
   /* carte centrée dans la page */
   iframe[title="streamlit_folium.st_folium"] {
-    display: block; margin: 0 auto; width: 1000px !important; max-width: 100%; }
+    display: block !important; margin: 0 auto !important; width: 1000px !important; max-width: 100%;
+    /* hauteur de la carte (600) : évite le grand rectangle blanc en dessous */
+    height: 600px !important; }
   .pied { color: #8A90B5; font-size: .8rem; text-align: center; margin: 2.5rem 0 .5rem 0; }
 </style>
 """
@@ -81,12 +82,19 @@ def appliquer_style():
     st.markdown(css, unsafe_allow_html=True)
 
 
-def entete(titre, *paragraphes):
+def logo_colonne():
+    """Logo en haut de la colonne de gauche."""
     logo = base64.b64encode(LOGO.read_bytes()).decode()
+    st.sidebar.markdown(
+        f"<div class='logo-colonne'><img src='data:image/png;base64,{logo}' "
+        "alt='6t bureau de recherche'></div>",
+        unsafe_allow_html=True,
+    )
+
+
+def entete(titre, *paragraphes):
     st.markdown(
-        "<div class='hero'>"
-        f"<div class='hero-logo'><img src='data:image/png;base64,{logo}' alt='6t'></div>"
-        f"<div><h1>{titre}</h1>"
+        f"<div class='hero'><div><h1>{titre}</h1>"
         + "".join(f"<p>{p}</p>" for p in paragraphes)
         + "</div></div>",
         unsafe_allow_html=True,
