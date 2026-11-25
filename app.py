@@ -413,7 +413,7 @@ Après avoir ajouté ou supprimé des données, cliquez à nouveau sur « {BTN_L
     
     if st.session_state.aggregated_values:
         with st.sidebar.container():
-            st.markdown("""# Résultats : valeurs agrégées des variables territoriales """)
+            st.markdown("""# Résultats : Valeurs agrégées des indicateurs territoriaux """)
             df = st.session_state.aggregated_values_df
             if len(df)>0:
                 for number, (title, variables) in enumerate(RESULT_BLOCKS, 1):
