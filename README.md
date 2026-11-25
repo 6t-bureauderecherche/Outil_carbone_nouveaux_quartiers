@@ -1,4 +1,4 @@
-# CO2-nouveaux-quartiers
+# Outil carbone de nouveaux quartiers
 This is a Streamlit web app to compute spatial average of built-environment variables that have a causal effect on CO2 mobility-emissions.
 It is part of the project "Elaboration d’un outil d’évaluation de l’impact carbone de la mobilité dans les nouveaux quartiers à Genève" for the Canton of Geneva that aims to evaluate carbon emissions in function of a user's choices in terms of the location and building specifics of a new quartier. 
 
