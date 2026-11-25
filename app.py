@@ -351,6 +351,7 @@ with tab2:
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # 2.4. Add progress bar to top op sidebar
 # ensure progress bar resides at top of sidebar and is invisible initially
+st.sidebar.image("assets/logo_6t_bureau.png", width=230)
 progress_bar = st.sidebar.progress(0)
 progress_bar.empty()
 
