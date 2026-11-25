@@ -139,7 +139,7 @@ def _compute_avg(grid,drawing,progress_bar):
     
     # Save results in session state
     st.session_state.aggregated_values = True
-    st.session_state.calcul_message = ('success', "Valeurs agrégées calculées !")
+    st.session_state.calcul_message = ('success', "Valeurs agrégées calculées")
     st.session_state.aggregated_values_df = var_aggr_df
     st.session_state.drawing_buffer = drawing_buffer
 
